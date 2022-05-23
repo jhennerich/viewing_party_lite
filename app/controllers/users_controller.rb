@@ -14,8 +14,8 @@ class UsersController < ApplicationController
     else
       user.errors.full_messages.each do |message|
         flash[:notice] = message
-        render :new
       end
+      render :new
     end
   end
 
@@ -26,6 +26,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.permit(:name, :email)
+    params.permit(:name, :email, :password, :password_confirmation)
   end
 end

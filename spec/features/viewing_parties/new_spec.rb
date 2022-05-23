@@ -4,8 +4,8 @@ require 'rails_helper'
 
 describe 'create a new viewing party' do
   before do
-    @user = User.create!(name: 'Brylan', email: 'brylan.gannon112@gmail.com')
-    @user2 = User.create!(name: 'John', email: 'John.Hennerich@gmail.com')
+    @user = User.create!(name: 'Brylan', email: 'brylan.gannon112@gmail.com', password: 'john', password_confirmation: 'john')
+    @user2 = User.create!(name: 'John', email: 'John.Hennerich@gmail.com', password: 'brylan', password_confirmation: 'brylan')
     @movie_id = 550
     visit user_movie_path(@user, @movie_id)
 

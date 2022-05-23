@@ -4,8 +4,8 @@ require 'rails_helper'
 
 describe 'Discover Movies' do
   before do
-    @user1 = User.create!(name: 'John', email: 'john.hennerich@gmail.com')
-    @user2 = User.create!(name: 'Brylan', email: 'brylan.gannon112@gmail.com')
+    @user1 = User.create!(name: 'John', email: 'john.hennerich@gmail.com', password: 'john', password_confirmation: 'john')
+    @user2 = User.create!(name: 'Brylan', email: 'brylan.gannon112@gmail.com', password: 'brylan', password_confirmation: 'brylan')
 
     visit user_discover_index_path(@user1)
   end

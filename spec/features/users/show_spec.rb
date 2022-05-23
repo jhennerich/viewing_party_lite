@@ -4,8 +4,8 @@ require 'rails_helper'
 
 describe 'User dashboard' do
   before do
-    @user1 = User.create!(name: 'John', email: 'john.hennerich@gmail.com')
-    @user2 = User.create!(name: 'Brylan', email: 'brylan.gannon112@gmail.com')
+    @user1 = User.create!(name: 'John', email: 'john.hennerich@gmail.com', password: 'john', password_confirmation: 'john')
+    @user2 = User.create!(name: 'Brylan', email: 'brylan.gannon112@gmail.com', password: 'brylan', password_confirmation: 'brylan')
 
     @vp1 = ViewingParty.create!(date: '2022/05/11', start_time: '12:00', duration: 120, movie_title: 'Star Wars')
     @vp1a = ViewingParty.create!(date: '2022/05/11', start_time: '15:00', duration: 120,
