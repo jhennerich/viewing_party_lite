@@ -2,12 +2,14 @@
 
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get '/', to: 'landing#index'
+  root 'landing#index'
 
   get '/register', to: 'users#new'
-  get '/login', to: 'users#login_form'
-  post '/login', to: 'users#login_auth'
+  post '/register', to: 'users#create'
+  get '/login', to: 'users#login_auth'
+  post '/login', to: 'sessions#create'
   post '/users/:id', to: 'viewing_parties#create'
+  delete '/logout', to: 'sessions#destroy'
 
   resources :users, only: %i[show create] do
     resources :movies, only: %i[index show] do

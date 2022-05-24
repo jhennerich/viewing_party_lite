@@ -13,7 +13,7 @@
     <% flash.each do |type, msg| %>
       <p><%= type.to_s.capitalize %>: <%= msg %></p>
     <% end %>
-    <%= link_to 'Landing Page', '/' %>
+    <%= link_to 'Landing Page', '/' %><br>
     <%= yield %>
   </body>
 </html>
