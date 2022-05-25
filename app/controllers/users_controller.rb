@@ -11,7 +11,8 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
-      redirect_to "/users/#{user.id}"
+#      redirect_to "/dashboard/#{user.id}"
+      redirect_to "/"
     else
       user.errors.full_messages.each do |message|
       flash[:notice] = message
@@ -28,12 +29,11 @@ class UsersController < ApplicationController
     if user
       if user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect_to "/users/#{user.id}"
+        redirect_to "/dashboard/current_user"
       else
         flash[:notice] = 'invalid password'
         render :login_form
       end
-
     else
       flash[:notice] = 'invalid email'
       render :login_form

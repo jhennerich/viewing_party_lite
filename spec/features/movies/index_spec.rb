@@ -4,15 +4,20 @@ require 'rails_helper'
 
 describe 'The movie results page' do
   before do
-    @user = User.create!(name: 'Brylan', email: 'brylan.gannon112@gmail.com', password: 'brylan', password_confirmation: 'brylan')
-    visit "/users/#{@user.id}/discover"
+    @user = User.create!(name: 'John', email: 'john.hennerich@gmail.com', password: 'john', password_confirmation: 'john')
+    visit '/login'
+    fill_in :email, with: 'john.hennerich@gmail.com'
+    fill_in :password, with: 'john'
+    click_button 'Login'
+    visit "/dashboard/discover"
   end
 
   context 'after clicking the Top Rated button' do
     it 'displays the top 40 movies' do
       click_button 'Top Rated Movies'
 
-      expect(current_path).to eq(user_movies_path(@user))
+#      expect(current_path).to eq(user_movies_path(@user))
+      expect(current_path).to eq("/dashboard/movies")
       expect(page).to have_css('#movie', count: 40)
     end
   end
