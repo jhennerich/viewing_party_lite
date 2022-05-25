@@ -8,13 +8,21 @@ Rails.application.routes.draw do
   post '/register', to: 'users#create'
   get '/login', to: 'users#login_auth'
   post '/login', to: 'sessions#create'
-  post '/users/:id', to: 'viewing_parties#create'
+#  post '/users/:id', to: 'viewing_parties#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users, only: %i[show create] do
-    resources :movies, only: %i[index show] do
-      resources :viewing_parties, only: [:new]
-    end
-    resources :discover, only: [:index]
-  end
+  get '/dashboard/current_user', to: 'users#show'
+  get '/dashboard/movies', to: 'movies#index'
+  get '/dashboard/movies/:id', to: 'movies#show'
+  get '/dashboard/movies/:id/new', to: 'viewing_parties#new'
+  get '/dashboard/discover', to: 'discover#index'
+
+  post '/dashboard', to: 'viewing_parties#create'
+
+#  resources :users, only: %i[create] do
+#    resources :movies, only: %i[index show] do
+#      resources :viewing_parties, only: [:new]
+#    end
+#    resources :discover, only: [:index]
+#  end
 end

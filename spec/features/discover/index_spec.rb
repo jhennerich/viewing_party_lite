@@ -7,7 +7,8 @@ describe 'Discover Movies' do
     @user1 = User.create!(name: 'John', email: 'john.hennerich@gmail.com', password: 'john', password_confirmation: 'john')
     @user2 = User.create!(name: 'Brylan', email: 'brylan.gannon112@gmail.com', password: 'brylan', password_confirmation: 'brylan')
 
-    visit user_discover_index_path(@user1)
+    session[:user_id] = @user1.id
+    visit "dashboard/discover"
   end
 
   it 'Displays a header' do

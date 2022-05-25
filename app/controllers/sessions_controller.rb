@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       flash[:error] = "Sorry, your credentials are bad."
-      render :new
+      redirect_to '/'
     end
   end
 

@@ -4,12 +4,12 @@ class ViewingPartiesController < ApplicationController
   before_action :all_users, only: [:new]
 
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user.id)
   end
 
   def create
-    host_user = User.find(params[:id])
-    party = ViewingParty.create!(
+    host_user = User.find(current_user.id)
+    party = ViewingParty.create(
       duration: params[:duration],
       date: "#{params['date(1i)']}/#{params['date(2i)']}/#{params['date(3i)']}",
       start_time: "#{params['time(4i)']}:#{params['time(5i)']}",
@@ -23,13 +23,13 @@ class ViewingPartiesController < ApplicationController
         PartyUser.create!(user_id: user.id, viewing_party_id: party.id)
       end
     end
-    redirect_to user_path(host_user)
+    redirect_to "/dashboard/current_user"
   end
 
   private
 
   def all_users
     @users = User.all.compact
-    @users.keep_if { |user| user.id != params[:user_id] }
+    @users.keep_if { |user| user.id != current_user.id }
   end
 end

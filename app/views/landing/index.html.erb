@@ -2,7 +2,7 @@
   Welcome, back! <br>
   <%= link_to 'Log out', '/logout', method: :delete %>
   <% @users.each do |user| %>
-  <h3><%= link_to "#{user.name}", "/users/#{user.id}" %>: <%= user.email %></h3>
+  <h3><%= link_to "#{user.name}", "/dashboard/current_user" %>: <%= user.email %></h3>
   <% end %>
 <% else %>
   <h1>Welcome to Viewing Party Lite</h1>

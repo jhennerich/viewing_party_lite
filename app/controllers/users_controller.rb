@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     else
       user.errors.full_messages.each do |message|
       flash[:notice] = message
-      render :new
+      render :login_form
       end
     end
   end
@@ -43,7 +43,8 @@ class UsersController < ApplicationController
   private
 
   def get_user
-    @user = User.find(params[:id])
+#    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def user_params

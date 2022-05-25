@@ -13,7 +13,7 @@ RSpec.describe 'The User login page' do
       fill_in :password, with: 'hingadurgen'
       click_button 'Login'
 
-      expect(current_path).to eq("/users/#{@user.id}")
+      expect(current_path).to eq("/")
     end
   end
 
@@ -23,9 +23,7 @@ RSpec.describe 'The User login page' do
       fill_in :password, with: 'hingadurgen'
       click_button 'Login'
 
-
-      expect(page).to have_content("User Login")
-      expect(page).to have_content("Notice: invalid email")
+      expect(page).to have_content("Sorry, your credentials are bad.")
     end
 
     it 'password is incorrect' do
@@ -33,8 +31,7 @@ RSpec.describe 'The User login page' do
       fill_in :password, with: 'higadurgen'
       click_button 'Login'
 
-      expect(page).to have_content('User Login')
-      expect(page).to have_content('Notice: invalid password')
+      expect(page).to have_content("Sorry, your credentials are bad.")
     end
   end
 end
